@@ -3,103 +3,67 @@
 
 <head>
 
-    <?php include('header.php') ?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creditor Module</title>
+	<link rel="shortcut icon" href="img/icon.ico">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/logo-nav.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 	
 </head>
 
 <body>
 
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Creditor Module</a>
             </div>
-            <!-- /.navbar-header -->
-
-            
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li><a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Update<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Creditor Master Table</a></li>
-                                <li><a href="#">Purchase Order</a></li>
-                                <li><a href="#">Invoices</a></li>
-                                <li><a href="#">Credit Note</a></li>
-                                <li><a href="#">Journal Transfer</a></li>
-                                <li><a href="#">Payment</a></li>
-								<li><a href="#">Creditor Batch Header</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Setup <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Creditor Control Table</a>
-                                </li>
-                                <li>
-                                    <a href="#">Purchase Order Type Table</a>
-                                </li>
-                                <li>
-                                    <a href="#">Maintenance of Creditor Type Table</a>
-                                </li>
-                                <li>
-                                    <a href="#">Creditor Document Control Number</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-						<li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Enquiry </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="Help.php">Help</a>
+                    </li>
+                    <li>
+                        <a href="About.php">About</a>
+                    </li>
+                </ul>
             </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-<!------------------------------------------------------------------------------------------------------------>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                 
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-
-                
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    
-                    
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<center><img src="img/logo.gif" width="100" height="100"></center>
+                <center><h1>Creditor Module</h1>
+                <small>Account Payable Transaction Purpose<p></p> </small></center>
+				<center><a href="DataUpdate.php"><button type="button" class="btn btn-default"id = "DataUpdate" style="width: 300px; height: 50px"><b>Data Update</b></button></center>
+				<center><a href="Setup.php"><button type="button" class="btn btn-default"id = "Setup" style="width: 300px; height: 50px"><b>Setup</b></button></center>
+				<center><a href="Enquiry.php"><button type="button" class="btn btn-default"id = "Enquiry" style="width: 300px; height: 50px"><b>Enquiry</b></button></center>
+				<center><a href="Dashboard.php"><button type="button" class="btn btn-default"id = "Dashboard" style="width: 300px; height: 50px"><b>Dashboard</b></button></center>
+				<!--<center><a href="#Logout.php"><button type="button" class="btn btn-default"id = "Logout" style="width: 300px; height: 50px"><b>Logout</b></button></center>-->
+				
+            </div>
+        </div>
     </div>
-    <!-- /#wrapper -->
+	
 
 
 
