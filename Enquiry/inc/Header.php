@@ -14,12 +14,12 @@
     <link href="../Bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../Bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="../Bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+    <script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
+	
 	<script src="../Bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="../Bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../Bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="../Bootstrap/dist/js/sb-admin-2.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
 	
 	<style type="text/css">
 
