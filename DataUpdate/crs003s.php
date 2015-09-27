@@ -218,89 +218,90 @@ else{
 </table>
 	<legend><strong>Purchase Order</strong></legend>
 	<div class="container">
-	<table>
-		
-				
-				
-		<td height="10"></td>
+		<table>
 			
-		
-			
-			<tr>
-				<td> Creditor Code  </td>
-				<td width="250"> <label><input type="text" disabled="disabled" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo $CR_Code;?>" ></label> </td> 
-				<td> <font color="red"><?php echo $CR_Code_ERR;?> </td>
-			</tr><tr>
-				<td> PO Number  </td>
-				<td width="250"> <label><input type="text" disabled="disabled" pattern="[P][0-9]{3,3}" title="{P}{3-digit no.} without parentheses" placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label> </td> 
-				<td> <font color="red"><?php echo "$POnumErr $POExist $POInvalid $PO_Number_Notfound $added $updated";?> </td>
-			</tr>
-			
-			<tr>						
-				<td> PO Date </td>
-				<td> <label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label> </td>
-				<td> <font color="red"><?php echo $POdateErr ;?></font> </td>
-			</tr>
-			<tr>
-				<td><p>PO Type</p></td>
-				<td><p><label>
-				<?php
-				
-					 define('servername','localhost');
-
-					 define('username','root');
-
-					 define('password','');
-
-					 define('dbname','company');
-					function connect(){
-						mysql_connect(servername, username, password) or die ('Could not connect to database'. mysql_error());
-						mysql_select_db(dbname);
-					}
 					
-					function close(){
-						mysql_close();
-					}
 					
-					function query(){
-						$myData = mysql_query("SELECT * FROM potypetable");
-						while($record = mysql_fetch_array($myData)){
-							echo '<option value="'.$record['POtype'].'">'.$record['POtype'].'</option>';
-							
+			<td height="10"></td>
+				
+			
+				
+				<tr>
+					<td> Creditor Code  </td>
+					<td width="250"> <label><input type="text" disabled="disabled" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo $CR_Code;?>" ></label> </td> 
+					<td> <font color="red"><?php echo $CR_Code_ERR;?> </td>
+				</tr><tr>
+					<td> PO Number  </td>
+					<td width="250"> <label><input type="text" disabled="disabled" pattern="[P][0-9]{3,3}" title="{P}{3-digit no.} without parentheses" placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label> </td> 
+					<td> <font color="red"><?php echo "$POnumErr $POExist $POInvalid $PO_Number_Notfound $added $updated";?> </td>
+				</tr>
+				
+				<tr>						
+					<td> PO Date </td>
+					<td> <label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label> </td>
+					<td> <font color="red"><?php echo $POdateErr ;?></font> </td>
+				</tr>
+				<tr>
+					<td><p>PO Type</p></td>
+					<td><p><label>
+					<?php
+					
+						 define('servername','localhost');
+
+						 define('username','root');
+
+						 define('password','');
+
+						 define('dbname','company');
+						function connect(){
+							mysql_connect(servername, username, password) or die ('Could not connect to database'. mysql_error());
+							mysql_select_db(dbname);
 						}
-					}
-				
-					 connect();
-				?>
-				<select name="PO_Type" id="PO_Type" disabled="disabled" >
-					<?php 	
-					$PO_Number = strip_tags($_POST['PO_Number']);
-					$_SESSION['number']=$PO_Number;
-					$query="SELECT POType FROM `purchase` WHERE `POtemp`='$PO_Number'";
-					$records = mysql_query($query) or die(mysql_error());	
-
-					while($row=mysql_fetch_array($records))
-					{
-						echo '<option value = "'.$row['POType'].'">'.$row['POType'].'</option>';
-					}	
+						
+						function close(){
+							mysql_close();
+						}
+						
+						function query(){
+							$myData = mysql_query("SELECT * FROM potypetable");
+							while($record = mysql_fetch_array($myData)){
+								echo '<option value="'.$record['POtype'].'">'.$record['POtype'].'</option>';
+								
+							}
+						}
+					
+						 connect();
 					?>
-					<?php query()?>
-				</select>
-					<?php close()?>
+					<select name="PO_Type" id="PO_Type" disabled="disabled" >
+						<?php 	
+						$PO_Number = strip_tags($_POST['PO_Number']);
+						$_SESSION['number']=$PO_Number;
+						$query="SELECT POType FROM `purchase` WHERE `POtemp`='$PO_Number'";
+						$records = mysql_query($query) or die(mysql_error());	
+
+						while($row=mysql_fetch_array($records))
+						{
+							echo '<option value = "'.$row['POType'].'">'.$row['POType'].'</option>';
+						}	
+						?>
+						<?php query()?>
+					</select>
+						<?php close()?>
+					
+					<!-- <input type="text"   placeholder="Enter PO Type" name="PO_Type" id="PO_Type" value="<?php echo $PO_Type;?>" > -->
+					</label></p></td>
+				</tr>
+				<tr>
+					<td> PO Amount </td>
+					<td> <label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label> </td>
+					<td> <font color="red"><?php echo $POamtErr;?></font> </td>
+				</tr>
 				
-				<!-- <input type="text"   placeholder="Enter PO Type" name="PO_Type" id="PO_Type" value="<?php echo $PO_Type;?>" > -->
-				</label></p></td>
-			</tr>
-			<tr>
-				<td> PO Amount </td>
-				<td> <label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label> </td>
-				<td> <font color="red"><?php echo $POamtErr;?></font> </td>
-			</tr>
-			
-	<!--<button name="additem" id="additem" class="btn btn-default">Add Row</button> -->
-	
+		<!--<button name="additem" id="additem" class="btn btn-default">Add Row</button> -->
 		
-	</table>	</div>
+			
+		</table>	
+	</div>
 </form> 	
 
 	<legend><strong>Item </strong></legend> 
@@ -340,7 +341,7 @@ else{
 
 	</script>  
 
-<button onclick="addRow()"class="btn btn-default" id = "additem" disabled><span class="glyphicon glyphicon-plus"></span>Add</button> 
+	<button onclick="addRow()"class="btn btn-default" id = "additem" disabled><span class="glyphicon glyphicon-plus"></span>Add</button> 
 	<button onclick="removeRow()"class="btn btn-default" id = "removeitem"disabled><span class="glyphicon glyphicon-remove"></span>Remove</button>
 	
 	<script type="text/javascript">

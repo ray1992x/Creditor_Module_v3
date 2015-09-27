@@ -43,11 +43,11 @@ include("Dashboard/crs003s_LPO.php");
                             <ul class="nav nav-second-level">
                                 <li><a href="#">Creditor Master Table</a></li>
                                 <li><a href="DataUpdate/crs003s.php">Purchase Order</a></li>
-                                <li><a href="#">Invoices</a></li>
+                                <li><a href="DataUpdate/crs004s.php">Invoices</a></li>
                                 <li><a href="#">Credit Note</a></li>
                                 <li><a href="#">Journal Transfer</a></li>
                                 <li><a href="#">Payment</a></li>
-								<li><a href="#">Creditor Batch Header</a></li>
+								<li><a href="Dataupdate/crs018s.php">Creditor Batch Header</a></li>
                             </ul>
                         </li>
                         <li>

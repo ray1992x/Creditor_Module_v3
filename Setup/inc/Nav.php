@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Creditor Module</a>
+                <a class="navbar-brand" href="../index.php">Creditor Module</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -23,12 +23,12 @@
                             <a href="#"></i> Data Update<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><a href="#">Creditor Master Table</a></li>
-                                <li><a href="crs003s.php">Purchase Order</a></li>
-                                <li><a href="#">Invoices</a></li>
+                                <li><a href="../DataUpdate/crs003s.php">Purchase Order</a></li>
+                                <li><a href="../DataUpdate/crs004s.php">Invoices</a></li>
                                 <li><a href="#">Credit Note</a></li>
                                 <li><a href="#">Journal Transfer</a></li>
                                 <li><a href="#">Payment</a></li>
-								<li><a href="#">Creditor Batch Header</a></li>
+								<li><a href="../Dataupdate/crs018s.php">Creditor Batch Header</a></li>
                             </ul>
                         </li>
                         <li>
