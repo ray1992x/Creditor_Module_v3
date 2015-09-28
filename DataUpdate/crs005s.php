@@ -307,204 +307,25 @@ else
 <html>
 <head>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Creditor Module</title>
-	<link rel="shortcut icon" href="../img/icon.ico">
-
-	<link rel="stylesheet" type="text/css" href="../dhtmlx/skins/web/dhtmlxgrid.css">
-	<link rel='STYLESHEET' type='text/css' href='../dhtmlx/codebase/dhtmlxgrid.css'>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/css/logo-nav.css" rel="stylesheet">
-	<!-- css link for datepicker function -->
-	<link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.9.2.custom.css">
-		
-	<script src='../dhtmlx/codebase/dhtmlxcommon.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid.js'></script>		
-	<script src='../dhtmlx/codebase/dhtmlxgridcell.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid_math.js'></script>
-	<script src="../dhtmlx/connector_codebase/connector.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_srnd.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_filter.js"></script>
 	
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/crs005s.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui.js'></script>
-		
-	<style type="text/css">
-
-
-
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1000px;
-  }
-}
-table#tb1 {
-	border-collapse: collapse;
-}
-
-td {
-	padding: 6px;
-}
-
-table#tb1 td{
-	border:2px solid black;
-	align:center;
-}
-
-table#tb1 th{
-	background-color:gray;
-	color:black;
-	border:2px solid black;
-	padding: 6px;
-}
-
-div.table_config{
-	float: center;
-	background:#FFF;
-	height:750px;
-	width:100%;
-	overflow:scroll;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-div.footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-
-
-	</style>
-	
-			
-		<!--add current time to footer-->
-<script>
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    var s=today.getSeconds();
-	var y=today.getYear();
-	var mo=today.getMonth();
-	var d=today.getDay();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('time').innerHTML = h+":"+m+":"+s;
-    var t = setTimeout(function(){startTime()},500);
-}
-
-function checkTime(i) {
-    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-</script>
-
-<style>
-	div#footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-	table#tb2 td{
-	border: 5px solid black;
-	width:100%;
-	background-color:#D8D8D8;
-}
-</style>
+    <?php include('inc/header.php') ?>
+    <?php include('inc/dhtmlx.php') ?>
+	<script src="../js/crs005s.js"></script>
 
 </head>
 <body onload="startTime()">
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="../index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="../Help.php">Help</a>
-                    </li>
-                    <li>
-                        <a href="../About.php">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-	<table>
-<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
-		<label><a href="crs005s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
-		<label><a href="crs005s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
-		</table>
+	<?php include('inc/Nav.php') ?>
+	
+<div id="page-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<!--<table>
+	<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
+	<label><a href="crs005s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
+	<label><a href="crs005s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
+</table>-->
 		
 <form id="form" name="form" method="post" action="">
-<fieldset>
-<legend><strong>Credit Note</strong></legend>
-
-        <div class="container">
-<table>
-
-<td height="10"></td>
-<tr>			
-<td>Creditor Code</td>
-<td><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo $CR_Code;?>"></label></td>
-<td><font color="red"><?php echo $CR_Code_Err;?></font></td>
-</tr>
-<tr>
-			
-<td>Credit Note No</td>
-<td><label><input disabled="disabled" type="text"  placeholder="Enter Credit Note No" name="CR_NoteNo" id="CR_NoteNo" value="<?php echo $CR_NoteNo;?>"></label></td>
-<td><font color="red"><?php echo $CR_NoteNo_Err;?></font></td>
-</tr>
-<tr>
-<td>Batch Number</td>
-<td><label><input disabled="disabled" type="text" pattern="[C][B][0-9]{9,9}" title="{CB}{9-digit no.} without parentheses" placeholder="Enter Batch Number" name="CR_BatchNo" id="CR_BatchNo" value="<?php echo $CR_BatchNo;?>" ></label></td> 
-<td><font color="red"><?php echo $CR_BatchNo_Err;?></font></td>
-</tr>
-<tr>
-<td>Sequence Number </td>
-<td><label><input  readonly STYLE="background:#ffffe0; color:#8b0000;"type="text"  name="CR_SeqNo" id="CR_SeqNo" value="<?php echo $CR_SeqNo;?>" ></label></td> 					
-<td><font color="red"><?php echo $CR_SeqNo_Err;?></font></td>
-
-<tr>
-<td>Credit Note Amount</td>
-<td><label><input disabled="disabled" type="text" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter Credit Note Amount" name="CR_NoteAmt" id="CR_NoteAmt" value="<?php echo $CR_NoteAmt;?>" ></label></td>
-<td><font color="red"><?php echo $CR_NoteAmt_Err;?></font></td>
-</tr>
-<tr>
-<td>Credit Note Date</td>
-<td><label><input disabled="disabled" type="text" placeholder="Enter Credit Note Date" name="CR_NoteDate" type="text" id="CR_NoteDate" value="<?php echo $CR_NoteDate;?>" ></label></td>
-<td><font color="red"><?php echo $CR_NoteDate_Err;?></font></td>
-</tr>
-<tr>
-<td>Credit Note Description</td>
-<td><label><input disabled="disabled" type="text" placeholder="Enter Credit Note Description" name="CR_NoteDesc" type="text" id="CR_NoteDesc" value="<?php echo $CR_NoteDesc;?>" ></label></td>
-<td><font color="red"><?php echo $CR_NoteDesc_Err;?></font></td>
-</tr>
 <table>
 	<tr>
 		<td colspan="2"><button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
@@ -518,90 +339,142 @@ function checkTime(i) {
 		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
 	</tr>
 </table>
-</table>
+<fieldset>
+<legend><strong>Credit Note</strong></legend>
+
+<div class="container">
+	<table>
+
+		<td height="10"></td>
+		<tr>			
+		<td>Creditor Code</td>
+		<td><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo $CR_Code;?>"></label></td>
+		<td><font color="red"><?php echo $CR_Code_Err;?></font></td>
+		</tr>
+		<tr>
+					
+		<td>Credit Note No</td>
+		<td><label><input disabled="disabled" type="text"  placeholder="Enter Credit Note No" name="CR_NoteNo" id="CR_NoteNo" value="<?php echo $CR_NoteNo;?>"></label></td>
+		<td><font color="red"><?php echo $CR_NoteNo_Err;?></font></td>
+		</tr>
+		
+		<tr>
+		<td>Batch Number</td>
+		<td><label><input disabled="disabled" type="text" pattern="[C][B][0-9]{9,9}" title="{CB}{9-digit no.} without parentheses" placeholder="Enter Batch Number" name="CR_BatchNo" id="CR_BatchNo" value="<?php echo $CR_BatchNo;?>" ></label></td> 
+		<td><font color="red"><?php echo $CR_BatchNo_Err;?></font></td>
+		</tr>
+		
+		<tr>
+		<td>Sequence Number </td>
+		<td><label><input  readonly STYLE="background:#ffffe0; color:#8b0000;"type="text"  name="CR_SeqNo" id="CR_SeqNo" value="<?php echo $CR_SeqNo;?>" ></label></td> 					
+		<td><font color="red"><?php echo $CR_SeqNo_Err;?></font></td>
+		</tr>
+		
+		<tr>
+		<td>Credit Note Amount</td>
+		<td><label><input disabled="disabled" type="text" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter Credit Note Amount" name="CR_NoteAmt" id="CR_NoteAmt" value="<?php echo $CR_NoteAmt;?>" ></label></td>
+		<td><font color="red"><?php echo $CR_NoteAmt_Err;?></font></td>
+		</tr>
+		
+		<tr>
+		<td>Credit Note Date</td>
+		<td><label><input disabled="disabled" type="text" placeholder="Enter Credit Note Date" name="CR_NoteDate" type="text" id="CR_NoteDate" value="<?php echo $CR_NoteDate;?>" ></label></td>
+		<td><font color="red"><?php echo $CR_NoteDate_Err;?></font></td>
+		</tr>
+		
+		<tr>
+		<td>Credit Note Description</td>
+		<td><label><input disabled="disabled" type="text" placeholder="Enter Credit Note Description" name="CR_NoteDesc" type="text" id="CR_NoteDesc" value="<?php echo $CR_NoteDesc;?>" ></label></td>
+		<td><font color="red"><?php echo $CR_NoteDesc_Err;?></font></td>
+		</tr>
+		
+		
+		
+	</table>
 </div>
 
 <fieldset>
 
-<legend><strong>Item</strong></legend> 
+	<legend><strong>Item</strong></legend> 
 
-        <div class="container">
-<table> 
-<tr>
-<td>Credit Note REF No.</td>
-<td><label> 
-<select name="REF" id="REF"  >
-	<option >Select Reference Number</option>
-<?php
+	<div class="container">
+		<table> 
+			<tr>
+			<td>Credit Note REF No.</td>
+			<td><label><select name="REF" id="REF"  >
+				<option >Select Reference Number</option>
+				<?php
 
-	$query = "SELECT InvNumber FROM invoice WHERE CreditorCode='$CR_Code'";
-	$records = mysql_query($query) or die(mysql_error());	
-	while($row=mysql_fetch_array($records)){
-		echo '<option value="' . $row['InvNumber'] . '"';
-		if ($REF==$row['InvNumber']){echo 'selected';}
-		echo '>' . $row['InvNumber'] . '</option>';
-	}
-?>
+				$query = "SELECT InvNumber FROM invoice WHERE CreditorCode='$CR_Code'";
+				$records = mysql_query($query) or die(mysql_error());	
+				while($row=mysql_fetch_array($records)){
+				echo '<option value="' . $row['InvNumber'] . '"';
+				if ($REF==$row['InvNumber']){echo 'selected';}
+				echo '>' . $row['InvNumber'] . '</option>';
+				}
+				?>
 
-</select>
-</tr>
-</table>
-<div id="gridbox" style="width:700px;height:400px;"></div> 
-<script>
-function calculateFooterValues(stage){
-/* if(stage && stage!=2)
-return true; */
-var nrQ = document.getElementById("nr_q");
-nrQ.innerHTML = sumColumn(4)
-return true;
-}
-function sumColumn(ind){
-var out = 0;
-for(var i=0;i<mygrid1.getRowsNum();i++){
-out+= parseFloat(mygrid1.cells2(i,ind).getValue())
-}
-return out;
-}
+			</select></label></td>
+			</tr>
+		</table>
+		<div id="gridbox" style="width:700px;height:400px;"></div> 
+		<script>
+		function calculateFooterValues(stage){
+		/* if(stage && stage!=2)
+		return true; */
+		var nrQ = document.getElementById("nr_q");
+		nrQ.innerHTML = sumColumn(4)
+		return true;
+		}
+		function sumColumn(ind){
+		var out = 0;
+		for(var i=0;i<mygrid1.getRowsNum();i++){
+		out+= parseFloat(mygrid1.cells2(i,ind).getValue())
+		}
+		return out;
+		}
 
-mygrid1 = new dhtmlXGridObject('gridbox');// video for this http://www.youtube.com/watch?v=hPBwsqfyi0s
-mygrid1.setImagePath('codebase/imgs/'); //the path to images required by grid         
-mygrid1.setHeader("aa,Item ID,CreditNote REF No,Narrative,Amount");//the headers of columns 
-mygrid1.setInitWidths("150,80,150,235,80")   //the widths of columns     
-mygrid1.setColAlign("left,right,right,right") //the alignment of columns          
-mygrid1.setColTypes("ed,cntr,ed,ed,ed");                //the types of columns          
-mygrid1.setColSorting("connector,connector,connector,connector,connector");          //the sorting types 
-mygrid1.setSkin("dhx_web");	
-mygrid1.attachEvent("onEditCell",calculateFooterValues)		//note
-mygrid1.setSkin("dhx_web");				//set the layout of grid 
-mygrid1.init();      //finishes initialization  path to images required by grid 
-mygrid1.attachFooter("Total amount,<div id='nr_q'>0</div>",["text-align:left;"]); //note
-mygrid1.enableMathEditing(true);  
-mygrid1.enableSmartRendering(true);
-mygrid1.loadXML("CNdetail.php");//for database control
-var dp1=new dataProcessor("CNdetail.php");
-dp1.init(mygrid1); 
-mygrid1.setColumnHidden(0,true); 
+		mygrid1 = new dhtmlXGridObject('gridbox');// video for this http://www.youtube.com/watch?v=hPBwsqfyi0s
+		mygrid1.setImagePath('codebase/imgs/'); //the path to images required by grid         
+		mygrid1.setHeader("aa,Item ID,CreditNote REF No,Narrative,Amount");//the headers of columns 
+		mygrid1.setInitWidths("150,80,150,235,80")   //the widths of columns     
+		mygrid1.setColAlign("left,right,right,right") //the alignment of columns          
+		mygrid1.setColTypes("ed,cntr,ed,ed,ed");                //the types of columns          
+		mygrid1.setColSorting("connector,connector,connector,connector,connector");          //the sorting types 
+		mygrid1.setSkin("dhx_web");	
+		mygrid1.attachEvent("onEditCell",calculateFooterValues)		//note
+		mygrid1.setSkin("dhx_web");				//set the layout of grid 
+		mygrid1.init();      //finishes initialization  path to images required by grid 
+		mygrid1.attachFooter("Total amount,<div id='nr_q'>0</div>",["text-align:left;"]); //note
+		mygrid1.enableMathEditing(true);  
+		mygrid1.enableSmartRendering(true);
+		mygrid1.loadXML("CNdetail.php");//for database control
+		var dp1=new dataProcessor("CNdetail.php");
+		dp1.init(mygrid1); 
+		mygrid1.setColumnHidden(0,true); 
 
-var i="<?php echo $_SESSION['CRNoteNo']; ?>";
+		var i="<?php echo $_SESSION['CRNoteNo']; ?>";
 
-function addRow(){
-var newId1= (new Date()).valueOf()
-mygrid1.addRow(newId1,[i,,,,,],mygrid1.getRowsNum())
-mygrid1.selectRow(mygrid1.getRowIndex(newId1),false,false,true);
-}
-function removeRow(){
-var selId = mygrid1.getSelectedId()
-mygrid1.deleteRow(selId);
-}	
+		function addRow(){
+		var newId1= (new Date()).valueOf()
+		mygrid1.addRow(newId1,[i,,,,,],mygrid1.getRowsNum())
+		mygrid1.selectRow(mygrid1.getRowIndex(newId1),false,false,true);
+		}
+		function removeRow(){
+		var selId = mygrid1.getSelectedId()
+		mygrid1.deleteRow(selId);
+		}	
 
-</script>  
-<button name="additem" id="additem" class="btn btn-default"> Add Item</button>
-	<button onclick="removeRow()"class="btn btn-default"id="removeitem">Remove Row</button>
+		</script>  
+		<button name="additem" id="additem" class="btn btn-default"> Add Item</button>
+		<button onclick="removeRow()"class="btn btn-default"id="removeitem">Remove Row</button>
 	</div>
 </fieldset>
 </fieldset>
-
 </form> 
+</div>
+</div>
+</div>
 <script type="text/javascript">
 
 	$(':text').ready(function() {
@@ -620,14 +493,14 @@ mygrid1.deleteRow(selId);
 	}
 	});
 </script>
-<div id="footer">
+<!--<div id="footer">
 			<table id="tb2">
 				<tr>
 					<td id="noti"><strong>Credit Note</strong></td>
 					<td id="time" style="font-weight:bold;"></td>
 				</tr>
 			</table>
-		</div>
+		</div>-->
 </body>
 </html>
 

@@ -550,130 +550,11 @@ if(isset($_POST['Confirm']))
 ?>
 <html>
 <head>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Creditor Module</title>
-	<link rel="shortcut icon" href="../img/icon.ico">
-
-	<link rel="stylesheet" type="text/css" href="../dhtmlx/skins/web/dhtmlxgrid.css">
-	<link rel='STYLESHEET' type='text/css' href='../dhtmlx/codebase/dhtmlxgrid.css'>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/css/logo-nav.css" rel="stylesheet">
-	<!-- css link for datepicker function -->
-	<link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.9.2.custom.css">
-		
-	<script src='../dhtmlx/codebase/dhtmlxcommon.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid.js'></script>		
-	<script src='../dhtmlx/codebase/dhtmlxgridcell.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid_math.js'></script>
-	<script src="../dhtmlx/connector_codebase/connector.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_srnd.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_filter.js"></script>
 	
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/crs008.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui.js'></script>
-		
-	<style type="text/css">
+    <?php include('inc/header.php') ?>
+    <?php include('inc/dhtmlx.php') ?>
+	<script src="../js/crs008s.js"></script>
 
-
-
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1000px;
-  }
-}
-table#tb1 {
-	border-collapse: collapse;
-}
-
-td {
-	padding: 6px;
-}
-
-table#tb1 td{
-	border:2px solid black;
-	align:center;
-}
-
-table#tb1 th{
-	background-color:gray;
-	color:black;
-	border:2px solid black;
-	padding: 6px;
-}
-
-div.table_config{
-	float: center;
-	background:#FFF;
-	height:750px;
-	width:100%;
-	overflow:scroll;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-div.footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-p {
-    padding-bottom: 2cm;
-}
-
-
-
-	</style>
-	
-			
-		<!--add current time to footer-->
-<script>
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    var s=today.getSeconds();
-	var y=today.getYear();
-	var mo=today.getMonth();
-	var d=today.getDay();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('time').innerHTML = h+":"+m+":"+s;
-    var t = setTimeout(function(){startTime()},500);
-}
-
-function checkTime(i) {
-    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-</script>
-
-<style>
-	div#footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-	table#tb2 td{
-	border: 5px solid black;
-	width:100%;
-	background-color:#D8D8D8;
-}
-</style>
 <script language="JavaScript">
 	function setCookie(cname, cvalue) {
 		document.cookie = cname + "=" + cvalue;
@@ -734,102 +615,18 @@ function checkTime(i) {
 	</script>
 </head>
 <body onload="startTime()">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="../index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="../Help.php">Help</a>
-                    </li>
-                    <li>
-                        <a href="../About.php">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-	<table>
-<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
-		<label><a href="crs008s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
-		<label><a href="crs008s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
-	</td></table>
+	<?php include('inc/Nav.php') ?>
 	
+<div id="page-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<!--<table>
+<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
+<label><a href="crs008s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
+<label><a href="crs008s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
+</table>-->
+
 <form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-<fieldset>
-<legend><strong>Payment</strong></legend>
-
-        <div class="container">
-
-
-<table>
-<tr>
-<td align="top">Payment Type</td>
-<td>
-<label><input disabled="disabled" onclick="changeRadioButton(this)" type="radio" name="Pay_Type" id="Pay_Type" value="Auto" <?php if ($Pay_Type=='Auto') { echo 'checked'; }  ?>  />Auto</label>
-<label><input disabled="disabled" onclick="changeRadioButton(this)" type="radio" name="Pay_Type" id="Pay_Type" value="Manual"<?php if ($Pay_Type=='Manual') { echo 'checked'; } ?> />Manual</label>
-
-<font color="red"><?php echo $Pay_Type_Err;?></font></td>
-
-
-<tr>
-<td width="200"> Creditor Code </td>
-<td width ="300"><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses"  placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo $CR_Code;?>" ></label>
-<font color="red"><?php echo $CR_Code_Err;?>
-</td> 
-</tr>
-</tr>
-<tr>			
-<td>Bank Code</td>
-<td><label><input disabled="disabled" type="text"   placeholder="Enter Bank Code" name="Bank_Code" id="Bank_Code" value="<?php echo $Bank_Code;?>"></label>
-<font color="red"><?php echo $Bank_Code_Err;?>
-</td>
-</tr>
-
-<tr>			
-<td>Cheque Number</td>
-<td><label><input disabled="disabled" type="text" name="CHQ_Number"placeholder="Enter Cheque Number" id="CHQ_Number" value="<?php echo $CHQ_Number;?>" ></label>
-<font color="red"><?php echo "$CHQ_Number_Err $CHQExist";?>
-</td>
-</tr>
-<tr>
-<td>Payment Amount</td>
-<td><label> <input disabled="disabled" type="text" pattern="[0-9]*" title="Please enter only digits."  placeholder="Enter Payment Amount" name="Pay_Amount" type="text" id="Pay_Amount" value="<?php echo $Pay_Amount;?>" ></label>
-<font color="red"><?php echo $Pay_Amount_Err;?>
-</td>
-</tr>
-<tr>
-<td>Date Paid</td>
-<td><label> <input disabled="disabled" name="Date_Paid" id="Date_Paid" value="<?php echo $Date_Paid;?>" ></label>
-<font color="red"><?php echo $Date_Paid_Err;?>
-</td>
-</tr>
-<tr>
-<td>Batch Number</td>
-<td><label> <input disabled="disabled" type="text"  placeholder="Enter Batch Number" name="Batch_Num" type="text" id="Batch_Num" value="<?php echo $Batch_Num;?>" ></label>
-<font color="red"><?php echo $Batch_Num_Err;?>
-</td>
-</tr>
-<tr>
-<td>Sequence Number</td>
-<td><label> <input type="text"  name="SEQ_Num" type="text" id="SEQ_Num" value="<?php echo $SEQ_Num;?>" readonly STYLE="background:#ffffe0; color:#8b0000;" ></label>
-</td>
-</tr>
-<tr>
-<td>Batch Amount</td>
-<td><label> <input type="text"   name="Batch_Amt" type="text" id="Batch_Amt" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $Batch_Amt;?>" ></label>
-</td>
-</tr>
 <table>
 	<tr>
 		<td colspan="2"><button onclick="changeRadioButton(this)" name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
@@ -841,114 +638,190 @@ function checkTime(i) {
 		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
 	</tr>
 </table>
-</table>
+	<fieldset>
+		<legend><strong>Payment</strong></legend>
+
+		<div class="container">
+			<table>
+				<tr>
+				<td align="top">Payment Type</td>
+				<td>
+				<label><input disabled="disabled" onclick="changeRadioButton(this)" type="radio" name="Pay_Type" id="Pay_Type" value="Auto" <?php if ($Pay_Type=='Auto') { echo 'checked'; }  ?>  />Auto</label>
+				<label><input disabled="disabled" onclick="changeRadioButton(this)" type="radio" name="Pay_Type" id="Pay_Type" value="Manual"<?php if ($Pay_Type=='Manual') { echo 'checked'; } ?> />Manual</label>
+
+				<font color="red"><?php echo $Pay_Type_Err;?></font></td>
+
+
+				<tr>
+				<td width="200"> Creditor Code </td>
+				<td width ="300"><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses"  placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo $CR_Code;?>" ></label>
+				<font color="red"><?php echo $CR_Code_Err;?>
+				</td> 
+				</tr>
+				</tr>
+				<tr>			
+				<td>Bank Code</td>
+				<td><label><input disabled="disabled" type="text"   placeholder="Enter Bank Code" name="Bank_Code" id="Bank_Code" value="<?php echo $Bank_Code;?>"></label>
+				<font color="red"><?php echo $Bank_Code_Err;?>
+				</td>
+				</tr>
+
+				<tr>			
+				<td>Cheque Number</td>
+				<td><label><input disabled="disabled" type="text" name="CHQ_Number"placeholder="Enter Cheque Number" id="CHQ_Number" value="<?php echo $CHQ_Number;?>" ></label>
+				<font color="red"><?php echo "$CHQ_Number_Err $CHQExist";?>
+				</td>
+				</tr>
+				<tr>
+				<td>Payment Amount</td>
+				<td><label> <input disabled="disabled" type="text" pattern="[0-9]*" title="Please enter only digits."  placeholder="Enter Payment Amount" name="Pay_Amount" type="text" id="Pay_Amount" value="<?php echo $Pay_Amount;?>" ></label>
+				<font color="red"><?php echo $Pay_Amount_Err;?>
+				</td>
+				</tr>
+				<tr>
+				<td>Date Paid</td>
+				<td><label> <input disabled="disabled" name="Date_Paid" id="Date_Paid" value="<?php echo $Date_Paid;?>" ></label>
+				<font color="red"><?php echo $Date_Paid_Err;?>
+				</td>
+				</tr>
+				<tr>
+				<td>Batch Number</td>
+				<td><label> <input disabled="disabled" type="text"  placeholder="Enter Batch Number" name="Batch_Num" type="text" id="Batch_Num" value="<?php echo $Batch_Num;?>" ></label>
+				<font color="red"><?php echo $Batch_Num_Err;?>
+				</td>
+				</tr>
+				<tr>
+				<td>Sequence Number</td>
+				<td><label> <input type="text"  name="SEQ_Num" type="text" id="SEQ_Num" value="<?php echo $SEQ_Num;?>" readonly STYLE="background:#ffffe0; color:#8b0000;" ></label>
+				</td>
+				</tr>
+				<tr>
+				<td>Batch Amount</td>
+				<td><label> <input type="text"   name="Batch_Amt" type="text" id="Batch_Amt" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $Batch_Amt;?>" ></label>
+				</td>
+				</tr>
+				<table>
+					<tr>
+						<td colspan="2"><button onclick="changeRadioButton(this)" name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
+						<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
+						<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
+						<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
+						<label><button name="Edit" value="Edit"  id="Edit" class="btn btn-default" /><span class="glyphicon glyphicon-edit"></span> Edit</button></label>
+						<label><button name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
+						<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
+					</tr>
+				</table>
+			</table>
+		</div>
+		<fieldset>
+
+			<legend><strong>Payment Detail</strong></legend> 
+					<div class="container">
+			<table>	
+			<tr>
+			<td>Invoice</td>
+			<td><label> <input  type="text"   placeholder="Invoice to be paid" name="invoiceno" type="text" id="invoiceno" value="" ></label>
+			<label><button name="pay" id="pay" value="pay" class="btn btn-default"> Pay</button></label>
+			<font color="red"><?php echo $overpay;?><font color="green"><?php echo $aa;?></td>
+			</td>
+				
+			</tr>
+			</table>
+			<div id="gridbox" style="width:700px;height:400px;"></div> 
+
+
+			<script>
+			function calculateFooterValues2(stage){
+			/* if(stage && stage!=2)
+			return true; */
+			var nrQ = document.getElementById("nr_q");
+			nrQ.innerHTML = sumColumn(8)
+			return true;
+			}
+			function sumColumn(ind){
+			var out = 0;
+			for(var i=0;i<mygrid3.getRowsNum();i++){
+			out+= parseFloat(mygrid3.cells2(i,ind).getValue())
+			}
+			return out;
+			}
+
+
+			mygrid3 = new dhtmlXGridObject('gridbox');// video for this http://www.youtube.com/watch?v=hPBwsqfyi0s
+			mygrid3.setImagePath('../codebase/imgs/'); //the path to images required by grid         
+			mygrid3.setHeader("ChequeNumber,No,Date,Due Date,Invoice No,PO Number, Invoice Amount,Paid Amount, Payment Amount, Remark");//the headers of columns 
+			mygrid3.setInitWidths("50,80,80,80,80,80,80,80,80")   //the widths of columns     
+			mygrid3.setColAlign("left,left,right,right,right,right,right,right,right,right") //the alignment of columns          
+			mygrid3.setColTypes("ro,cntr,ro,ro,ro,ro,ro,ro,ro,ro");                //the types of columns          
+			mygrid3.setColSorting("connector,connector,connector,connector,connector,connector,connector,connector,connector,connector");          //the sorting types   
+			mygrid3.setSkin("dhx_web");				//set the layout of grid 
+			mygrid3.attachEvent("onEditCell",calculateFooterValues2)		//note calculate
+			mygrid3.setSkin("dhx_web");				//set the layout of grid 
+			mygrid3.init();      //finishes initialization  path to images required by grid 
+			mygrid3.enableMathEditing(true);  
+			mygrid3.enableSmartRendering(true);
+			mygrid3.loadXML("paydetailtable.php");//for database control
+			var dp3=new dataProcessor("paydetailtable.php");
+			dp3.init(mygrid3);  
+			mygrid3.setColumnHidden(0,true);
+
+			var i="<?php echo $_SESSION['PCR_Code']; ?>";
+
+			function addRow(){
+			var newId3 = (new Date()).valueOf()
+			mygrid3.addRow(newId3,[i,,,,,,,,,],mygrid3.getRowsNum())
+			mygrid3.selectRow(mygrid3.getRowIndex(newId3),false,false,true);
+			}
+			function removeRow(){
+			var selId = mygrid3.getSelectedId()
+			mygrid3.deleteRow(selId);
+			}	
+			</script>  
+			<script type="text/javascript">
+					function change()
+					{
+						var elem = document.getElementById("button1");
+						if (elem.value=="Edit") elem.value = "Update";
+						else elem.value = "Edit";
+					}
+					
+					$(':text').ready(function() {
+					if($('#CR_Code').val() != "" ) {
+					   $('#additem').removeAttr('disabled');
+					   $('#removeitem').removeAttr('disabled');
+					   $('#Edit').removeAttr('disabled');
+					   $('#Delete').removeAttr('disabled');  
+					} if ($('#CHQ_Number').val() != "" ) {
+					   $('#invoiceno').removeAttr('disabled');
+					   $('#pay').removeAttr('disabled');
+						
+					} else {
+					   $('#invoiceno').attr('disabled', true);   
+					   $('#pay').attr('disabled', true); 
+					   $('#additem').attr('disabled', true);   
+					   $('#removeitem').attr('disabled', true);   
+					   $('#Edit').attr('disabled', true);   
+					   $('#Delete').attr('disabled', true);   
+					}
+					});
+				</script>
+				<tr>
+				<td>Total Paid Amount</td>
+				<td><label> <input type="text"   name="Total_amount" type="text" id="Total_amount" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $total;?>" ></label>
+				</td>
+			</tr>
+				<!--
+			<button onclick="addRow()">Add Row</button> 
+			<button onclick="removeRow()">Remove Row</button>-->
+			</div>
+		</fieldset>
+
+	</fieldset>
+</form>
 </div>
-<fieldset>
-
-<legend><strong>Payment Detail</strong></legend> 
-        <div class="container">
-<table>	
-<tr>
-<td>Invoice</td>
-<td><label> <input  type="text"   placeholder="Invoice to be paid" name="invoiceno" type="text" id="invoiceno" value="" ></label>
-<label><button name="pay" id="pay" value="pay" class="btn btn-default"> Pay</button></label>
-<font color="red"><?php echo $overpay;?><font color="green"><?php echo $aa;?></td>
-</td>
-	
-</tr>
-</table>
-<div id="gridbox" style="width:700px;height:400px;"></div> 
-
-
-<script>
-function calculateFooterValues2(stage){
-/* if(stage && stage!=2)
-return true; */
-var nrQ = document.getElementById("nr_q");
-nrQ.innerHTML = sumColumn(8)
-return true;
-}
-function sumColumn(ind){
-var out = 0;
-for(var i=0;i<mygrid3.getRowsNum();i++){
-out+= parseFloat(mygrid3.cells2(i,ind).getValue())
-}
-return out;
-}
-
-
-mygrid3 = new dhtmlXGridObject('gridbox');// video for this http://www.youtube.com/watch?v=hPBwsqfyi0s
-mygrid3.setImagePath('../codebase/imgs/'); //the path to images required by grid         
-mygrid3.setHeader("ChequeNumber,No,Date,Due Date,Invoice No,PO Number, Invoice Amount,Paid Amount, Payment Amount, Remark");//the headers of columns 
-mygrid3.setInitWidths("50,80,80,80,80,80,80,80,80")   //the widths of columns     
-mygrid3.setColAlign("left,left,right,right,right,right,right,right,right,right") //the alignment of columns          
-mygrid3.setColTypes("ro,cntr,ro,ro,ro,ro,ro,ro,ro,ro");                //the types of columns          
-mygrid3.setColSorting("connector,connector,connector,connector,connector,connector,connector,connector,connector,connector");          //the sorting types   
-mygrid3.setSkin("dhx_web");				//set the layout of grid 
-mygrid3.attachEvent("onEditCell",calculateFooterValues2)		//note calculate
-mygrid3.setSkin("dhx_web");				//set the layout of grid 
-mygrid3.init();      //finishes initialization  path to images required by grid 
-mygrid3.enableMathEditing(true);  
-mygrid3.enableSmartRendering(true);
-mygrid3.loadXML("paydetailtable.php");//for database control
-var dp3=new dataProcessor("paydetailtable.php");
-dp3.init(mygrid3);  
-mygrid3.setColumnHidden(0,true);
-
-var i="<?php echo $_SESSION['PCR_Code']; ?>";
-
-function addRow(){
-var newId3 = (new Date()).valueOf()
-mygrid3.addRow(newId3,[i,,,,,,,,,],mygrid3.getRowsNum())
-mygrid3.selectRow(mygrid3.getRowIndex(newId3),false,false,true);
-}
-function removeRow(){
-var selId = mygrid3.getSelectedId()
-mygrid3.deleteRow(selId);
-}	
-</script>  
-<script type="text/javascript">
-		function change()
-		{
-			var elem = document.getElementById("button1");
-			if (elem.value=="Edit") elem.value = "Update";
-			else elem.value = "Edit";
-		}
-		
-		$(':text').ready(function() {
-		if($('#CR_Code').val() != "" ) {
-		   $('#additem').removeAttr('disabled');
-		   $('#removeitem').removeAttr('disabled');
-		   $('#Edit').removeAttr('disabled');
-		   $('#Delete').removeAttr('disabled');  
-		} if ($('#CHQ_Number').val() != "" ) {
-		   $('#invoiceno').removeAttr('disabled');
-		   $('#pay').removeAttr('disabled');
-			
-		} else {
-		   $('#invoiceno').attr('disabled', true);   
-		   $('#pay').attr('disabled', true); 
-		   $('#additem').attr('disabled', true);   
-		   $('#removeitem').attr('disabled', true);   
-		   $('#Edit').attr('disabled', true);   
-		   $('#Delete').attr('disabled', true);   
-		}
-		});
-	</script>
-	<tr>
-	<td>Total Paid Amount</td>
-	<td><label> <input type="text"   name="Total_amount" type="text" id="Total_amount" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $total;?>" ></label>
-	</td>
-</tr>
-	<!--
-<button onclick="addRow()">Add Row</button> 
-<button onclick="removeRow()">Remove Row</button>-->
 </div>
-</fieldset>
-
-</fieldset>
-	</form>
-	<div id="footer">
+</div>
+	<!--<div id="footer">
 			<table id="tb2">
 				<tr>
 					<td id="noti"><strong>Payment</strong></td>
@@ -956,7 +829,7 @@ mygrid3.deleteRow(selId);
 				</tr>
 			</table>
 		</div>
-  <p> </p>
+  <p> </p>-->
 </body>
 </html>
 

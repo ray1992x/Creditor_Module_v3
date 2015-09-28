@@ -415,7 +415,7 @@ $_SESSION['invbatch']=NULL;*/
 <html>
 <head>
 
-	 <?php include('inc/header.php') ?>
+	<?php include('inc/header.php') ?>
     <?php include('inc/dhtmlx.php') ?>
 	<script src="../js/crs004s.js"></script>
 
@@ -426,15 +426,28 @@ $_SESSION['invbatch']=NULL;*/
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-	<table>
+	<!--<table>
 <td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
 		<label><a href="crs004s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
 		<label><a href="crs004s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
-		</table>
+		</table>-->
 		
 		
    
 <form id="form" name="form" method="post" action="">
+<table>
+	<tr>
+		<td colspan="2"><button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
+		<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
+		<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
+		<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
+		<label><button name="Edit" value="Edit"  id="Edit" class="btn btn-default" /><span class="glyphicon glyphicon-edit"></span> Edit</button></label>
+		<label><button name="Delete" value="Delete"   id="Delete"class="btn btn-default" /><span class="glyphicon glyphicon-remove"></span> Delete</button></label>
+		<label><button name="CDelete" value="CDelete"   id="CDelete"class="btn btn-default" /><span class="glyphicon glyphicon-ok"></span> Confirm</button></label>
+		<label><button name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
+		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
+	</tr>
+</table>
 <fieldset>
 	<legend><strong>Invoice</strong></legend>
 	<div class="container">
@@ -517,19 +530,7 @@ $_SESSION['invbatch']=NULL;*/
 			<td>Batch Value</td>
 			<td><label> <input type="text"     name="Batch_Value" type="text" id="Batch_Value" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $Batch_Value;?>" ></label></td>
 			</tr>
-			<table>
-				<tr>
-					<td colspan="2"><button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
-					<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
-					<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
-					<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
-					<label><button name="Edit" value="Edit"  id="Edit" class="btn btn-default" /><span class="glyphicon glyphicon-edit"></span> Edit</button></label>
-					<label><button name="Delete" value="Delete"   id="Delete"class="btn btn-default" /><span class="glyphicon glyphicon-remove"></span> Delete</button></label>
-					<label><button name="CDelete" value="CDelete"   id="CDelete"class="btn btn-default" /><span class="glyphicon glyphicon-ok"></span> Confirm</button></label>
-					<label><button name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
-					<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
-				</tr>
-			</table>
+			
 		</table>
 
 	</div>
