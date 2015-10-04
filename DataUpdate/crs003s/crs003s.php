@@ -279,165 +279,88 @@ else{
 ?>
 <html>
 <head>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Creditor Module</title>
-	<link rel="shortcut icon" href="../img/icon.ico">
-
-	<link rel="stylesheet" type="text/css" href="../dhtmlx/skins/web/dhtmlxgrid.css">
-	<link rel='STYLESHEET' type='text/css' href='../dhtmlx/codebase/dhtmlxgrid.css'>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/css/logo-nav.css" rel="stylesheet">
-	<!-- css link for datepicker function -->
-	<link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.9.2.custom.css">
-		
-	<script src='../dhtmlx/codebase/dhtmlxcommon.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid.js'></script>		
-	<script src='../dhtmlx/codebase/dhtmlxgridcell.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid_math.js'></script>
-	<script src="../dhtmlx/connector_codebase/connector.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_srnd.js"></script>
-	<script src="../dhtmlx/codebase/dhtmlxgrid_filter.js"></script>
 	
-    <script src="../bootstrap/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/crs003s.js"></script>
+    <?php include('inc/header.php') ?>
+    <?php include('inc/dhtmlx.php') ?>
 	<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src='../js/jquery-ui.js'></script>
-		
-	<style type="text/css">
-
-
-
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1000px;
-  }
-}
-table#tb1 {
-	border-collapse: collapse;
-}
-
-td {
-	padding: 6px;
-}
-
-table#tb1 td{
-	border:2px solid black;
-	align:center;
-}
-
-table#tb1 th{
-	background-color:gray;
-	color:black;
-	border:2px solid black;
-	padding: 6px;
-}
-
-div.table_config{
-	float: center;
-	background:#FFF;
-	height:750px;
-	width:100%;
-	overflow:scroll;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-div.footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-
-
-	</style>
-	
-			
-		<!--add current time to footer-->
-<script>
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    var s=today.getSeconds();
-	var y=today.getYear();
-	var mo=today.getMonth();
-	var d=today.getDay();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('time').innerHTML = h+":"+m+":"+s;
-    var t = setTimeout(function(){startTime()},500);
-}
-
-function checkTime(i) {
-    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-</script>
-
-<style>
-	div#footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-	table#tb2 td{
-	border: 5px solid black;
-	width:100%;
-	background-color:#D8D8D8;
-}
-</style>
+	<script src="../js/crs003s.js"></script>
 
 </head>
 <body onload="startTime()">
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li>
-					<a href="../index.php">Home</a>
-				</li>
-				<li>
-					<a href="../Help.php">Help</a>
-				</li>
-				<li>
-					<a href="../About.php">About</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
+
+<div id="wrapper">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Creditor Module</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li><a href="index.php"> Dashboard</a></li>
+                        <li>
+                            <a href="#"></i> Data Update<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#">Creditor Master Table</a></li>
+                                <li><a href="DataUpdate/crs003s.php">Purchase Order</a></li>
+                                <li><a href="#">Invoices</a></li>
+                                <li><a href="#">Credit Note</a></li>
+                                <li><a href="#">Journal Transfer</a></li>
+                                <li><a href="#">Payment</a></li>
+								<li><a href="#">Creditor Batch Header</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"> Setup <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Creditor Control Table</a>
+                                </li>
+                                <li>
+                                    <a href="#">Purchase Order Type Table</a>
+                                </li>
+                                <li>
+                                    <a href="#">Maintenance of Creditor Type Table</a>
+                                </li>
+                                <li>
+                                    <a href="#">Creditor Document Control Number</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+						<li>
+                            <a href="#"> Enquiry </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+</div>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
 <table>
-	<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
-			<label><a href="crs003s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
-			<label><a href="crs003s_PrintIndex.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
-	</table> 
+<td>	
+<label><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Clear</button></a></label>
+</td>
+</table> 
    
 
 	
 	
-<fieldset>
 
 	<legend><strong>Purchase Order</strong></legend>
 	<div class="container">
@@ -538,7 +461,6 @@ function checkTime(i) {
 	</table>	</div>
 	
 
-<fieldset>
 	<legend><strong>Item </strong></legend> 
 	
 	<div class="container">
@@ -600,20 +522,19 @@ function checkTime(i) {
 		   $('#Delete').attr('disabled', true);   
 		}
 		});
+		
 	</script>
 	</div>
-</fieldset>
-
-</fieldset>
-
-<div id="footer">
+	
+</div></div></div>
+<!--<div id="footer">
 			<table id="tb2">
 				<tr>
 					<td id="noti"><strong>Purchase Order</strong></td>
 					<td id="time" style="font-weight:bold;"></td>
 				</tr>
 			</table>
-		</div>
+		</div>-->
 
 
 </body>

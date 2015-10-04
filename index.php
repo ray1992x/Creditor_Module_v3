@@ -41,35 +41,35 @@ include("Dashboard/crs003s_LPO.php");
                         <li>
                             <a href="#"></i> Data Update<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#">Creditor Master Table</a></li>
+                                <li><a href="DataUpdate/crs002s.php">Creditor Master Table</a></li>
                                 <li><a href="DataUpdate/crs003s.php">Purchase Order</a></li>
-                                <li><a href="#">Invoices</a></li>
-                                <li><a href="#">Credit Note</a></li>
-                                <li><a href="#">Journal Transfer</a></li>
-                                <li><a href="#">Payment</a></li>
-								<li><a href="#">Creditor Batch Header</a></li>
+                                <li><a href="DataUpdate/crs004s.php">Invoices</a></li>
+                                <li><a href="DataUpdate/crs005s.php">Credit Note</a></li>
+                                <li><a href="DataUpdate/crs006s.php">Journal Transfer</a></li>
+                                <li><a href="DataUpdate/crs008s.php">Payment</a></li>
+								<li><a href="Dataupdate/crs018s.php">Creditor Batch Header</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#"> Setup <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Creditor Control Table</a>
+                                    <a href="Setup/crs001s.php">Creditor Control Table</a>
                                 </li>
                                 <li>
-                                    <a href="#">Purchase Order Type Table</a>
+                                    <a href="Setup/crs019s.php">Purchase Order Type Table</a>
                                 </li>
                                 <li>
-                                    <a href="#">Maintenance of Creditor Type Table</a>
+                                    <a href="Setup/crs020s.php">Maintenance of Creditor Type Table</a>
                                 </li>
                                 <li>
-                                    <a href="#">Creditor Document Control Number</a>
+                                    <a href="Setup/crs021s.php">Creditor Document Control Number</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 						<li>
-                            <a href="#"> Enquiry </a>
+                            <a href="Enquiry/index.php"> Enquiry </a>
                         </li>
                         
                     </ul>
