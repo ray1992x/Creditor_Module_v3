@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+
 include("DatabaseConnect.php");
 include("Dashboard/crs003s_PSO.php");
 include("Dashboard/crs003s_MSO.php");
 include("Dashboard/crs003s_LPO.php");
+include("Dashboard/crs004s_Report.php");
+
+(isset($_POST["Chart_Type"])) ? $Chart_Type = $_POST["Chart_Type"] : $Chart_Type=1;
 
 ?>
 
@@ -81,9 +86,60 @@ include("Dashboard/crs003s_LPO.php");
 <!------------------------------------------------------------------------------------------------------------>
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                 <?php include('Dashboard/crs003s.php') ?>
+                <div class="col-lg-12">	
+<form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<br>
+				<center><p><label>Select Dashboard  
+				  <label><select name="Chart_Type" id="Chart_Type" onchange="this.form.submit();" >
+						<option value = "1 " selected="selected">Purchase Order </option>
+						<option value = "2 ">Invoice </option>
+						<option value = "3 ">Credit Note </option>
+						<option value = "4 ">Journal </option>
+						<option value = "5 ">Payment </option>
+						</select></label></center>
+						<script type="text/javascript">
+ jQuery(document).ready(function(){
 
+  jQuery('select#Chart_Type').val('<?php echo $_POST['Chart_Type'];?>');
+
+ });
+</script>
+				 
+</form>
+				<?php
+					//if(isset($_POST['Go']))
+					//{
+						
+						
+						if( $Chart_Type == 1 )
+						{
+							include('Dashboard/crs003s.php');
+						}
+						else if( $Chart_Type == 2 )
+						{
+							include('Dashboard/crs004s.php');
+						}
+						else if( $Chart_Type == 3 )
+						{
+							include('Dashboard/crs003s.php');
+						}
+						else if( $Chart_Type == 4 )
+						{
+							include('Dashboard/crs003s.php');
+						}
+						else if( $Chart_Type == 5 )
+						{
+							include('Dashboard/crs003s.php');
+						}
+						else
+						{
+							include('Dashboard/crs003s.php');
+						}
+							
+						
+					//}
+				?>
+				
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

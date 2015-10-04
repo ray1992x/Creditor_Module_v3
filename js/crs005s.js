@@ -21,7 +21,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('#View').click(function(event){
 		event.preventDefault();
-		$('#CR_Code').prop("disabled", false);
+		$('#CR_NoteNo').prop("disabled", false);
 		$(' #Add, #View, #Edit, #Delete').hide();
 		$("#CView, #Cancel").show();
 	})

@@ -64,7 +64,7 @@ if(isset($_POST['Confirm']))
 	
 } else if(isset($_POST['CDelete'])){
 	
-	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+	/*if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		if(empty($_POST['PO_Number'])){
 			$CTTerr0 = " Required";
@@ -72,28 +72,30 @@ if(isset($_POST['Confirm']))
 			$PO_Number = strip_tags($_POST['PO_Number']);
 		}
 	
-	}
+	}*/
 	
-	if(	(!empty($_POST['PO_Number']))
-		){
-		$query = "SELECT * FROM purchase";
+	//if(	(!empty($_POST['PO_Number']))
+	//	){
+		/*$query = "SELECT * FROM purchase";
 		$query2 = "SELECT * FROM podetailtable";
 		$records = mysql_query($query) or die (mysql_error());
 		$records2 = mysql_query($query2) or die (mysql_error());
 		$exists = "no";
 		while($row=mysql_fetch_array($records)){
 			if($row['POtemp']==$PO_Number){
-				$exists = "yes";
+				$exists = "yes";*/
+				$PO_Number = $_SESSION['number'];
 				$delete = "DELETE FROM purchase WHERE POtemp='".$PO_Number."'";
 				$delete2 = "DELETE FROM podetailtable WHERE POtemp='".$PO_Number."'";
 				$records = mysql_query($delete) or die (mysql_error());
 				$records2 = mysql_query($delete2) or die (mysql_error());
 				$PO_Number = NULL;
-				break;
-			}
-		}
-		if($exists=="no"){$PO_Number_Notfound = "Not found";}else{$PO_Number_Notfound = "Delete successful!";}	
-	}						
+				$_SESSION['number'] = NULL;
+				//break;
+		//	}
+		//}
+		//if($exists=="no"){$PO_Number_Notfound = "Not found";}else{$PO_Number_Notfound = "Delete successful!";}	
+	//}						
 }
 
 
@@ -164,8 +166,23 @@ else if(isset($_POST['Update'])){
 }else if(isset($_POST['Cancel'])){
 	
 	
-	//$_SESSION['number']= NULL;
-	session_destroy();
+	$_SESSION['number']=NULL;
+	$CR_Code = NULL;
+	$PO_Allocation = NULL;
+	$PO_Number = NULL;
+	$PO_Date= NULL;
+	$PO_Type = NULL;
+	$PO_Amount =NULL;
+}else if(isset($_POST['Clear'])){
+	
+	
+	$_SESSION['number']=NULL;
+	$CR_Code = NULL;
+	$PO_Allocation = NULL;
+	$PO_Number = NULL;
+	$PO_Date= NULL;
+	$PO_Type = NULL;
+	$PO_Amount =NULL;
 }
 else{
 	
@@ -193,19 +210,19 @@ else{
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-<table>
-<td>	
+ 
+ 	
 <!--<label><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Clear</button></a></label>-->
-</td>
-</table> 
+ 
+  
    
 
 	
 	
 <form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-<table>
-	<tr>
-		<td colspan="2"><button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
+ 
+	 
+		<button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
 		<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
 		<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
 		<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
@@ -213,37 +230,37 @@ else{
 		<label><button name="Delete" value="Delete"   id="Delete"class="btn btn-default" /><span class="glyphicon glyphicon-remove"></span> Delete</button></label>
 		<label><button name="CDelete" value="CDelete"   id="CDelete"class="btn btn-default" /><span class="glyphicon glyphicon-ok"></span> Confirm</button></label>
 		<label><button  name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
-		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
-	</tr>
-</table>
+		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label> 
+		<label><button name="Clear" id="Clear" value="Clear" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Clear</button></label> 
+	 
+ 
 	<legend><strong>Purchase Order</strong></legend>
 	<div class="container">
-		<table>
 			
 					
 					
-			<td height="10"></td>
+			<td height="10"> 
 				
 			
 				
-				<tr>
-					<td> Creditor Code  </td>
-					<td width="250"> <label><input type="text" disabled="disabled" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo $CR_Code;?>" ></label> </td> 
-					<td> <font color="red"><?php echo $CR_Code_ERR;?> </td>
-				</tr><tr>
-					<td> PO Number  </td>
-					<td width="250"> <label><input type="text" disabled="disabled" pattern="[P][0-9]{3,3}" title="{P}{3-digit no.} without parentheses" placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label> </td> 
-					<td> <font color="red"><?php echo "$POnumErr $POExist $POInvalid $PO_Number_Notfound $added $updated";?> </td>
-				</tr>
-				
-				<tr>						
-					<td> PO Date </td>
-					<td> <label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label> </td>
-					<td> <font color="red"><?php echo $POdateErr ;?></font> </td>
-				</tr>
-				<tr>
-					<td><p>PO Type</p></td>
-					<td><p><label>
+				 
+					  <p><label>Creditor Code   
+					 <label><input type="text" disabled="disabled" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo $CR_Code;?>" ></label>   
+					  <font color="red"><?php echo $CR_Code_ERR;?> </font> </label></p>
+				  <br>
+					  <p><label>PO Number   
+					<td width="250"> <label><input type="text" disabled="disabled" pattern="[P][0-9]{3,3}" title="{P}{3-digit no.} without parentheses" placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label>   
+					  <font color="red"><?php echo "$POnumErr $POExist $POInvalid $PO_Number_Notfound $added $updated";?>  </font> </label></p>
+				 
+				<br>
+				 						
+					  <p><label>PO Date  
+					  <label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label>  
+					  <font color="red"><?php echo $POdateErr ;?></font></label></p>  
+				 
+				 <br>
+					 <p><label>PO Type 
+					 
 					<?php
 					
 						 define('servername','localhost');
@@ -289,18 +306,18 @@ else{
 						<?php close()?>
 					
 					<!-- <input type="text"   placeholder="Enter PO Type" name="PO_Type" id="PO_Type" value="<?php echo $PO_Type;?>" > -->
-					</label></p></td>
-				</tr>
-				<tr>
-					<td> PO Amount </td>
-					<td> <label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label> </td>
-					<td> <font color="red"><?php echo $POamtErr;?></font> </td>
-				</tr>
+					</label></p>
+				 
+				 <br>
+					  <p><label>PO Amount  
+					  <label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label>  
+					  <font color="red"><?php echo $POamtErr;?></font></label></p>  
+				 
 				
 		<!--<button name="additem" id="additem" class="btn btn-default">Add Row</button> -->
 		
 			
-		</table>	
+		 	
 	</div>
 </form> 	
 
@@ -321,7 +338,7 @@ else{
 		mygrid.init();      //finishes initialization  path to images required by grid 
 		mygrid.enableMathEditing(true);  
 		mygrid.enableSmartRendering(true);
-		mygrid.loadXML("crs003s_Detail.php");//for database control
+		mygrid.loadXML("crs003s/crs003s_Detail.php");//for database control
 		var dp=new dataProcessor("crs003s_Detail.php");
 		dp.init(mygrid);  
 		mygrid.setColumnHidden(0,true);
@@ -358,12 +375,15 @@ else{
 		   $('#removeitem').removeAttr('disabled');
 		   $('#Edit').removeAttr('disabled');
 		   $('#Delete').removeAttr('disabled');
+		   $(' #Add').hide();
 		} else {
 		   $('#additem').attr('disabled', true);   
 		   $('#removeitem').attr('disabled', true);   
 		   $('#Edit').attr('disabled', true);   
-		   $('#Delete').attr('disabled', true);   
+		   $('#Delete').attr('disabled', true); 
+		   $('#Edit, #Delete, #Clear').hide();  
 		}
+		
 		});
 		
 	</script>
@@ -372,11 +392,11 @@ else{
 </div></div></div>
 <!--<div id="footer">
 			<table id="tb2">
-				<tr>
-					<td id="noti"><strong>Purchase Order</strong></td>
-					<td id="time" style="font-weight:bold;"></td>
-				</tr>
-			</table>
+				 
+					<td id="noti"><strong>Purchase Order</strong> 
+					<td id="time" style="font-weight:bold;"> 
+				 
+			 
 		</div>-->
 
 

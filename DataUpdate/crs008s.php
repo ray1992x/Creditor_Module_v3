@@ -700,17 +700,7 @@ if(isset($_POST['Confirm']))
 				<td><label> <input type="text"   name="Batch_Amt" type="text" id="Batch_Amt" readonly STYLE="background:#ffffe0; color:#8b0000;" value="<?php echo $Batch_Amt;?>" ></label>
 				</td>
 				</tr>
-				<table>
-					<tr>
-						<td colspan="2"><button onclick="changeRadioButton(this)" name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
-						<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
-						<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
-						<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
-						<label><button name="Edit" value="Edit"  id="Edit" class="btn btn-default" /><span class="glyphicon glyphicon-edit"></span> Edit</button></label>
-						<label><button name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
-						<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
-					</tr>
-				</table>
+				
 			</table>
 		</div>
 		<fieldset>

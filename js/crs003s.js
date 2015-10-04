@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$('#Add').click(function(event){
 		event.preventDefault();
 		$('#CR_Code,#PO_Number,#PO_Date,#PO_Type,#PO_Amount').prop("disabled", false);
-		$(' #Add, #View, #Edit, #Delete').hide();
+		$(' #Add, #View, #Edit, #Delete, #Clear').hide();
 		$(" #Confirm ,#Cancel").show();
 	}) 
 });
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$('#View').click(function(event){
 		event.preventDefault();
 		$('#PO_Number').prop("disabled", false);
-		$(' #Add, #View, #Edit, #Delete').hide();
+		$(' #Add, #View, #Edit, #Delete, #Clear').hide();
 		$("#CView, #Cancel").show();
 	})
 	

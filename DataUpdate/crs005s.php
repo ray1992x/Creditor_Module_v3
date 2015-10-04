@@ -160,16 +160,16 @@ else if(isset($_POST['aa']))
 
 else if(isset($_POST['CView']))
 {
-	if(empty($_POST["CR_Code"])) 
+	if(empty($_POST["CR_NoteNo"])) 
 		{
-			$CR_Code_Err = "* Missing Creditor Code";
+			$CR_NoteNo_Err = "* Missing Credit Note Number";
 		}
 		else 
 		{
-			$CR_Code = strip_tags($_POST['CR_Code']);
+			$CR_NoteNo = strip_tags($_POST['CR_NoteNo']);
 		}
 	
-	if(!empty($_POST["CR_Code"])){
+	if(!empty($_POST["CR_NoteNo"])){
 		$CR_NoteNo = strip_tags($_POST['CR_NoteNo']);
 		$_SESSION['CRNoteNo']=$CR_NoteNo;
 		$query="SELECT * FROM `CreditNote` WHERE `CNnumber`='$CR_NoteNo'";
@@ -310,7 +310,7 @@ else
 	
     <?php include('inc/header.php') ?>
     <?php include('inc/dhtmlx.php') ?>
-	<script src="../js/crs005s.js"></script>
+	<script src=".../js/crs005s.js"></script>
 
 </head>
 <body onload="startTime()">
