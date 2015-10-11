@@ -8,6 +8,8 @@ $link=mysql_connect("localhost","root","");
   if(!$db)
   die('Failed to select Data Base '.mysql_error());
 
+date_default_timezone_set('Asia/Kuching');
+
 function startsWith($haystack, $needle)
 {
     return $needle === "" || strpos($haystack, $needle) === 0;

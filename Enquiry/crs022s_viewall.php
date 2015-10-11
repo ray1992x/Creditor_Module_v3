@@ -13,7 +13,8 @@ $FiscalPeriodY = $_SESSION['FiscalPeriodY'];
 $GroupBy = $_SESSION['GroupBy'];
 $IncludeSummary = $_SESSION['IncludeSummary'];
 
-$query_all = "SELECT ChequeNumber, PaymentAmount, creditormaster.CreditorName, creditormaster.CreditorCode, DATE_FORMAT(DatePaid,'%b %d, %Y') AS DatePaid FROM payment
+
+$query_all = "SELECT ChequeNumber, PaymentType, PaymentAmount, creditormaster.CreditorName, creditormaster.CreditorCode, DATE_FORMAT(DatePaid,'%b %d, %Y') AS DatePaid FROM payment
 LEFT JOIN creditormaster
 on payment.CreditorCode=creditormaster.CreditorCode";
 
@@ -36,12 +37,13 @@ class PDF extends PDF_MYSQL_TABLE
 		$this->SetFont('Arial', 'B', 8);
 		$this->SetFillColor(232,232,232);
 		$this->SetLineWidth(0.4);
-		$this->Cell(37, 8, '', 0,0,'');
+		$this->Cell(23, 8, '', 0,0,'');
 		$this->Cell(8, 8, 'No', 'BR',0,'','');
 		$this->Cell(25, 8, 'Creditor Code', 'B',0,'','');
 		$this->Cell(25, 8, 'Creditor Name', 'B',0,'','');
 		$this->Cell(20, 8, 'Cheque No.', 'B',0,'','');
 		$this->Cell(20, 8, 'Date Paid', 'B',0,'','');
+		$this->Cell(25, 8, 'Payment Type', 'B',0,'','');
 		$this->Cell(20, 8, 'Payment Amt.', 'B',1,'R','');
 		parent::Header();
 	}
@@ -88,12 +90,13 @@ if(isset($_POST['Print'])){
 						$item = $item+1;
 						$pdf->SetFillColor(232,232,232);
 						$pdf->SetLineWidth(0.4);
-						$pdf->Cell(37, 8, '', 0,0,'');
+						$pdf->Cell(23, 8, '', 0,0,'');
 						$pdf->Cell(8, 8, $item, 'R',0,'','');
 						$pdf->Cell(25, 8, $row['CreditorCode'], 0,0,'');
 						$pdf->Cell(25, 8, $row['CreditorName'], 0,0,'');
 						$pdf->Cell(20, 8, $row['ChequeNumber'], 0,0,'');
 						$pdf->Cell(20, 8, $row['DatePaid'], 0,0,'');
+						$pdf->Cell(25, 8, $row['PaymentType'], 0,0,'');
 						$pdf->Cell(20, 8, number_format($row["PaymentAmount"],0,'.',','), 0,0,'R');
 						$pdf->Ln(8);
 					}
@@ -257,10 +260,11 @@ li#buttons{
 						<th>Creditor Name</th>
 						<th>Cheque No.</th>
 						<th>Date Paid</th>
+						<th>Payment Type</th>
 						<th>Payment Amt.</th>
 						</tr>
 						</thead>
-						<tfoot><tr><td colspan="6"><div id="no-paging">&nbsp;</div></tr></tfoot>
+						<tfoot><tr><td colspan="7"><div id="no-paging">&nbsp;</div></tr></tfoot>
 						<tbody>';
 						while($row = $result->fetch_assoc()){
 							$number = $number+1;
@@ -276,6 +280,7 @@ li#buttons{
 							echo "<td>".$row["CreditorName"]."</td>";
 							echo "<td>".$row["ChequeNumber"]."</td>";
 							echo "<td>".$row["DatePaid"]."</td>";
+							echo "<td>".$row["PaymentType"]."</td>";
 							echo "<td align='right'>".number_format($row["PaymentAmount"],0,'.',',')."</td>";
 							echo "</tr></tbody>";
 						}
