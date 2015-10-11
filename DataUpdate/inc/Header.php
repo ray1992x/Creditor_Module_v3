@@ -20,7 +20,13 @@
     <script src="../Bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="../Bootstrap/dist/js/sb-admin-2.js"></script>
 	<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
+	<script src="../dist/jquery.validate.js"></script>
 	
+	<style>
+	.error{
+		color:red;
+	}
+	</style>
 	<style type="text/css">
 
 

@@ -16,11 +16,11 @@ $conn3->dynamic_loading(30); // limited the loading data details
 
 if($CR_Code!=null)
 {
-$conn3->render_sql("Select * from `paydetailtable`  where  `CRCode`='$CR_Code'","id","CRCode,No,date,period,invoice_no,po_number,invoice_amount,paid_period,payment_amount,remark");
+$conn3->render_sql("Select * from `paydetailtable`  where  `CRCode`='$CR_Code'","id","CRCode,No,date,period,invoice_no,po_number,invoice_amount,paid_period,payment_amount,Remark");
 }
 else
 { 
-$conn3->render_sql("Select * from `paydetailtable`  where  `CRCode`='0'","id","CRCode,No,date,period,invoice_no,po_number,invoice_amount,paid_period,payment_amount,remark");
+$conn3->render_sql("Select * from `paydetailtable`  where  `CRCode`='0'","id","CRCode,No,date,period,invoice_no,po_number,invoice_amount,paid_period,payment_amount,Remark");
 //$conn2->render_table("ivdetailtable","id","InvNumber,itemid,Description,UOM,Quantity,UnitPrice,ItemPrice"); //"table ","id" for table,"data column" for table
 }
 ?>

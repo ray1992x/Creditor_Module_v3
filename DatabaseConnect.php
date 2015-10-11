@@ -7,4 +7,27 @@ $link=mysql_connect("localhost","root","");
   session_start();
   if(!$db)
   die('Failed to select Data Base '.mysql_error());
+
+function startsWith($haystack, $needle)
+{
+    return $needle === "" || strpos($haystack, $needle) === 0;
+}
+
+function endsWith($haystack, $needle)
+{
+    return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+} 
+
+function bankName($bankcode){
+	$bankname;
+	if (startsWith($bankcode,'RHB')){
+		$bankname = "RHB Bank Bhd.";
+	}else if (startsWith($bankcode,'HLB')){
+		$bankname = "Hong Leong Bank Bhd.";
+	}else if (startsWith($bankcode,'MB')){
+		$bankname = "Malayan Banking Bhd.";
+	}else
+		$bankname = "";
+	return $bankname;	
+}   
 ?>

@@ -554,7 +554,30 @@ if(isset($_POST['Confirm']))
     <?php include('inc/header.php') ?>
     <?php include('inc/dhtmlx.php') ?>
 	<script src="../js/crs008s.js"></script>
-
+	<script>
+	$(document).ready(function(){
+		$('#hidden').hide();
+		
+		$('#searchCred').click(function(){
+			$('#hidden').show('slow');
+		});
+		
+		$('#close').click(function(){
+			$('#hidden').hide('slow');
+		});
+	
+	});
+	
+	$(':text').ready(function() {
+		if($('#CR_Code').val() != "" ) {
+		   event.preventDefault();
+			$('#CR_Code,#Pay_Type,#Bank_Code,#CHQ_Number,#Pay_Amount,#Date_Paid,#Batch_Num,#SEQ_Num,#Batch_Amt').prop("disabled", false);
+			$('#Confirm ,#Cancel').show();
+			$(' #Add, #View, #Edit, #Delete').hide();
+			}
+	});
+	</script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 <script language="JavaScript">
 	function setCookie(cname, cvalue) {
 		document.cookie = cname + "=" + cvalue;
@@ -642,6 +665,58 @@ if(isset($_POST['Confirm']))
 		<legend><strong>Payment</strong></legend>
 
 		<div class="container">
+		 <?php
+ $servername = "localhost";
+						$username = "root";
+						$password = "";
+						$dbname = "company";
+						
+						//create a connection
+						$conn = new mysqli($servername, $username, $password, $dbname);
+						//check connection
+						if ($conn->connect_error){
+							die("connection failed:" . $conn->connect_error);
+						}
+
+$_SESSION['CurrCred']="";
+					$seq=1;	
+					
+								echo '<div id="hidden">
+								<form method="post" id="subCred">
+								<table class="record_table">
+
+									<tr>
+										<th></th>
+										<th width="20">No.</th>
+										<th width="120">Creditor Code</th>
+										<th width="200">Description</th>
+									</tr>';
+									$sql = "SELECT * FROM creditor";//select database
+									$result = $conn->query($sql);//store the result in a variable
+									
+									while($row =  $result->fetch_assoc()){
+										echo '<tr>';
+											echo '<td><input type="radio" name="check" id="check" value="'.$row["CreditorCode"].'"></td>';
+											echo '<td>'.$seq++.'</td>';
+											echo '<td>'.$row["CreditorCode"].'</td>';
+											echo '<td>'.$row["CreditorName"].'</td>';
+										echo '</tr>';
+									}
+									echo '</table>';
+
+								echo '<input type="submit" name="selCred" id="selCred" value="OK">
+								<button type="button" id="close">Close</button>
+								';
+								
+							if(isset($_POST['selCred']) && isset($_POST['check']))
+							{
+								$data1 = $_POST['check'];
+								$_SESSION['CurrCred']=$data1;
+							}
+							else if(isset($_POST['confirm']) && !isset($_POST['check']))
+								echo "Please select a creditor.";
+							echo '</div>';
+					?>
 			<table>
 				<tr>
 				<td align="top">Payment Type</td>
@@ -654,10 +729,11 @@ if(isset($_POST['Confirm']))
 
 				<tr>
 				<td width="200"> Creditor Code </td>
-				<td width ="300"><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses"  placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo $CR_Code;?>" ></label>
+				<td width ="300"><label><input disabled="disabled" type="text" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses"  placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code" value="<?php echo "".$_SESSION['CurrCred'].""; ?>" ></label>
 				<font color="red"><?php echo $CR_Code_Err;?>
 				</td> 
-				</tr>
+				<td><button id="searchCred" type="button"><img src="../img/search.icon.png"></button></td>
+			</tr>
 				</tr>
 				<tr>			
 				<td>Bank Code</td>

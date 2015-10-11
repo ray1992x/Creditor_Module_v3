@@ -6,38 +6,15 @@ include("../databaseconnect.php");
 <head>
  
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Creditor Module</title>
-
-	<link rel="stylesheet" type="text/css" href="../dhtmlx/skins/web/dhtmlxgrid.css">
-	<link rel='STYLESHEET' type='text/css' href='../dhtmlx/codebase/dhtmlxgrid.css'>
-	<!-- important for loading grid-->
-	<script src='../dhtmlx/codebase/dhtmlxcommon.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid.js'></script>		
-	<script src='../dhtmlx/codebase/dhtmlxgridcell.js'></script>
-	<script src='../dhtmlx/codebase/dhtmlxgrid_math.js'></script>
-	<!-- important for database (update/del/edit)-->
-	<script src="../dhtmlx/connector_codebase/connector.js"></script>
-	<!-- important for smartrender-->
-	<script src="../dhtmlx/codebase/dhtmlxgrid_srnd.js"></script>
-	<!-- important for filtering-->
-	<script src="../dhtmlx/codebase/dhtmlxgrid_filter.js"></script>
-	<!-- Place favicon.ico and apple-touch-icon(s) here  -->
-	<link rel="shortcut icon" href="../img/icon.ico">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/css/logo-nav.css" rel="stylesheet">
+    <?php include('inc/header.php') ?>
+    <?php include('inc/dhtmlx.php') ?>
+	<script src="../js/crs006ss.js"></script>
+	
 
 
-<!--load jquery files-->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src='../js/jquery-ui.js'></script>
-<script type="text/javascript" src='../js/ui.js'></script>
-<script type="text/javascript" src='../js/jquery-ui-1.9.2.custom.js'></script>
 
-<!-- css link for datepicker function -->
-<link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.9.2.custom.css">
-  
-<!--add current time to footer-->
+
+<!--add current time to footer
 <script>
 //autocomplete function
 $(function() {
@@ -86,138 +63,37 @@ function myFunction() {
     window.open("../CreditorList.php", "_blank", "toolbar=yes, scrollbars=yes, resizable=no, top=240, left=1000, width=400, height=400");
 }
 
-  </script>
+  </script>-->
 
-<style type="text/css">
-
-
-
-table#tb1 {
-	border-collapse: collapse;
-	width:100%;
-}
-
-td {
-	padding: 6px;
-}
-
-table#tb2 td{
-	border: 5px solid black;
-	width:100%;
-	background-color:#D8D8D8;
-}
-
-table#tb1 td{
-	border:2px solid black;
-	align:center;
-}
-
-table#tb1 th{
-	background-color:gray;
-	color:black;
-	border:2px solid black;
-	padding: 6px;
-	align:center;
-}
-
-table#tb3 {
-	empty-cells: show; 
-	border-collapse: collapse;
-	width:100%;
-	height:100%;
-	cellspacing:4;
-}
-
-table#tb3 td{
-	border:2px solid black;
-	align:center;
-}
-
-table#tb3 th{
-	background-color:gray;
-	color:black;
-	border:2px solid black;
-	padding: 6px;
-	width:50%;
-}
-
-div.table_config{
-	float: right;
-	background:#FFF;
-	height:500px;
-	width:75%%;
-	overflow:scroll;
-	margin-right:0;
-}
-
-div.table_config2{
-	float: left;
-	background:#FFF;
-	height:500px;
-	width:25%;
-	overflow:scroll;
-	margin-left:0;
-}
-
-div#footer{
-	position:fixed;
-	bottom:0;
-	right:auto;
-	left:auto;
-	width:100%;
-	height:40px;
-	background-color:grey;
-}
-
-#divChoices {
-    border: 2px solid red;
-    position: fixed;
-    top: 100;
-    left: 1600;
-    display: none;
-}
-</style>
- 
  
 </head>
 <body onload="startTime()">
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="../index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="../Help.php">Help</a>
-                    </li>
-                    <li>
-                        <a href="../About.php">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body onload="startTime()">
+	<?php include('inc/Nav.php') ?>
+	
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
   <fieldset>
   <div class="J_entry">
   <div class="container">
+  <form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			
     <legend><strong>Journal Transfer</strong></legend>
-	<table>
-	<td><label><a href="../DataUpdate.php"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button></a></label>
-			<label><a href="crs006s.php"><button class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></a></label>
-			<label><a href="crs006s_Print.php" target="_blank"><button name="Print"  value="Print"  class="btn btn-default" /><span class="glyphicon glyphicon-print"> Print</button></a></label></td>
-	</table>
+<table>
+	<tr>
+		<td colspan="2"><button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
+		<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
+		<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
+		<label><button name="CView" value="CView"   id="CView"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View Item</button></label>
+		<label><button name="Edit" value="Edit"  id="Edit" class="btn btn-default" /><span class="glyphicon glyphicon-edit"></span> Edit</button></label>
+		<label><button name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
+		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label></td>
+	</tr>
+</table>
 	</div>
+	
 		<table align="center">
-			<form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 				<tr>
 					<td>Journal Number		:</td>
 					<td>
@@ -264,32 +140,21 @@ div#footer{
 					<label><input type="text" name="Batch_Amount" id="Batch_Amount" placeholder="Batch Amount" disabled="disabled" readonly STYLE="background:#ffffe0; color:#8b0000;"/></label>
 					</td>
 				</tr>
-				<tr>
-					<td><button name="Confirm" id="Confirm" class="btn btn-default">Confirm</button>
-					<button name="Cancel" id="Cancel" class="btn btn-default">Cancel</button>
-					<button name="CView" id="CView" class="btn btn-default">View</button>
-					<button name="Cdelete" id="Cdelete" class="btn btn-default">Delete</button>
-				</tr>
-				<tr><td colspan="2">
-				<button name="Add" id="Add" class="btn btn-default">Add New Entry</button>
-				<button name="View" id="View" class="btn btn-default">View Journal Entry</button>
-				<button name="delete" id="delete" class="btn btn-default">Delete Entry</button>
-				</td>
-				</tr>
-					</form> 
+				
 					</table>
 				</div>
 	
+					</form> 
   </fieldset>
-<div id="footer">
+<!--<div id="footer">
 			<table id="tb2">
 				<tr>
 					<td id="noti"><strong>Journal Transfer</strong></td>
 					<td id="time" style="font-weight:bold;"></td>
 				</tr>
 			</table>
-		</div>
-	
+		</div>-->
+	</div></div></div>
   <?php
 	$checkseq = 20;
 	$servername = "localhost";
@@ -547,7 +412,18 @@ div#footer{
 
 	?>
 	
-	
+	<script type="text/javascript">
+		
+		$(':text').ready(function() {
+		if($('#JR_Number').val() != "" ) {
+		   $('#Edit').removeAttr('disabled');
+		   $('#Delete').removeAttr('disabled');
+		} else {   
+		   $('#Edit').attr('disabled', true);   
+		   $('#Delete').attr('disabled', true);   
+		}
+		});
+	</script>
 		
  </body>
 </html>

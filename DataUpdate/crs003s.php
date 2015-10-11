@@ -1,5 +1,6 @@
  <!DOCTYPE html>
 <?php
+
 include("../DatabaseConnect.php");
 
 $PO_Allocation = "";
@@ -198,10 +199,35 @@ else{
 ?>
 <html>
 <head>
-	
+
     <?php include('inc/header.php') ?>
     <?php include('inc/dhtmlx.php') ?>
 	<script src="../js/crs003s.js"></script>
+		<script>
+	$(document).ready(function(){
+		$('#hidden').hide();
+		
+		$('#searchCred').click(function(){
+			$('#hidden').show('slow');
+		});
+		
+		$('#close').click(function(){
+			$('#hidden').hide('slow');
+		});
+	
+	});
+	
+	$(':text').ready(function() {
+		if($('#CR_Code').val() != "" ) {
+		   event.preventDefault();
+			$('#CR_Code,#PO_Number,#PO_Date,#PO_Amount').prop("disabled", false);
+			$('#Confirm ,#Cancel').show();
+			$(' #Add, #View, #Edit, #Delete').hide();
+			}
+	});
+	</script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
 
 </head>
 <body onload="startTime()">
@@ -218,10 +244,10 @@ else{
    
 
 	
-	
+<table>
 <form id="form" name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
- 
-	 
+
+	 <table>
 		<button name="Confirm" id="Confirm" value="Confirm" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
 		<label><button name="Add" id="Add" value="Add"   class="btn btn-default" href="javascript:toggleFormElements(false);"/><span class="glyphicon glyphicon-plus"></span> Add</button></label>
 		<label><button name="View" value="View"   id="View"class="btn btn-default" /><span class="glyphicon glyphicon-eye-open"></span> View</button></label>
@@ -232,34 +258,90 @@ else{
 		<label><button  name="Update" value="Update"   id="Update"class="btn btn-default" /><span class="glyphicon glyphicon-refresh"></span> Update</button></label>
 		<label><button name="Cancel" id="Cancel" value="Cancel" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button></label> 
 		<label><button name="Clear" id="Clear" value="Clear" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Clear</button></label> 
+	 </table>
 	 
  
 	<legend><strong>Purchase Order</strong></legend>
 	<div class="container">
-			
+	 <?php
+ $servername = "localhost";
+						$username = "root";
+						$password = "";
+						$dbname = "company";
+						
+						//create a connection
+						$conn = new mysqli($servername, $username, $password, $dbname);
+						//check connection
+						if ($conn->connect_error){
+							die("connection failed:" . $conn->connect_error);
+						}
+
+$_SESSION['CurrCred']="";
+					$seq=1;	
+					
+								echo '<div id="hidden">
+								<form method="post" id="subCred">
+								<table class="record_table">
+
+									<tr>
+										<th></th>
+										<th width="20">No.</th>
+										<th width="120">Creditor Code</th>
+										<th width="200">Description</th>
+									</tr>';
+									$sql = "SELECT * FROM creditor";//select database
+									$result = $conn->query($sql);//store the result in a variable
+									
+									while($row =  $result->fetch_assoc()){
+										echo '<tr>';
+											echo '<td><input type="radio" name="check" id="check" value="'.$row["CreditorCode"].'"></td>';
+											echo '<td>'.$seq++.'</td>';
+											echo '<td>'.$row["CreditorCode"].'</td>';
+											echo '<td>'.$row["CreditorName"].'</td>';
+										echo '</tr>';
+									}
+									echo '</table>';
+
+								echo '<input type="submit" name="selCred" id="selCred" value="OK">
+								<button type="button" id="close">Close</button>
+								';
+								
+							if(isset($_POST['selCred']) && isset($_POST['check']))
+							{
+								$data1 = $_POST['check'];
+								$_SESSION['CurrCred']=$data1;
+							}
+							else if(isset($_POST['confirm']) && !isset($_POST['check']))
+								echo "Please select a creditor.";
+							echo '</div>';
+					?>
+	<table>
 					
 					
 			<td height="10"> 
 				
 			
-				
-				 
-					  <p><label>Creditor Code   
-					 <label><input type="text" disabled="disabled" pattern="[C][0-9]{3,3}" title="{C}{3-digit code} without parentheses" placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo $CR_Code;?>" ></label>   
-					  <font color="red"><?php echo $CR_Code_ERR;?> </font> </label></p>
-				  <br>
-					  <p><label>PO Number   
-					<td width="250"> <label><input type="text" disabled="disabled" pattern="[P][0-9]{3,3}" title="{P}{3-digit no.} without parentheses" placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label>   
-					  <font color="red"><?php echo "$POnumErr $POExist $POInvalid $PO_Number_Notfound $added $updated";?>  </font> </label></p>
-				 
-				<br>
+				<tr>
+					<td><p><label>Creditor Code </td>  
+					 <td><label><input type="text"   disabled="disabled"placeholder="Enter Creditor Code" name="CR_Code" id="CR_Code"   value="<?php echo "".$_SESSION['CurrCred'].""; ?>" ></label>   
+					 </label></p></td>
+					 <td><button id="searchCred" type="button"><img src="../img/search.icon.png"></button></td>
+				  </tr>
+				  <tr>
+					  <td><p><label>PO Number  </td> 
+					<td width="250"> <label><input type="text" disabled="disabled" minlength="4" required  placeholder="Enter PO Number" name="PO_Number" id="PO_Number"   value="<?php echo $PO_Number;?>" ></label>   
+					  <font color="red"><?php echo "$POExist $POInvalid $PO_Number_Notfound $added $updated";?>  </font> </label></p>
+				 </td>
+				<tr>
+				<tr>
 				 						
-					  <p><label>PO Date  
-					  <label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label>  
+					  <td><p><label>PO Date </td> 
+					  <td><label><input type="text"  disabled="disabled" placeholder="Enter PO Date" name="PO_Date" id="PO_Date"   value="<?php echo $PO_Date;?>"></label>  
 					  <font color="red"><?php echo $POdateErr ;?></font></label></p>  
-				 
-				 <br>
-					 <p><label>PO Type 
+				 </td>
+				</tr>
+				<tr>
+					 <td><p><label>PO Type </td>
 					 
 					<?php
 					
@@ -289,7 +371,7 @@ else{
 					
 						 connect();
 					?>
-					<select name="PO_Type" id="PO_Type" disabled="disabled" >
+					<td><select name="PO_Type" id="PO_Type" disabled="disabled" >
 						<?php 	
 						$PO_Number = strip_tags($_POST['PO_Number']);
 						$_SESSION['number']=$PO_Number;
@@ -306,20 +388,42 @@ else{
 						<?php close()?>
 					
 					<!-- <input type="text"   placeholder="Enter PO Type" name="PO_Type" id="PO_Type" value="<?php echo $PO_Type;?>" > -->
-					</label></p>
+					</label></p></td>
 				 
-				 <br>
-					  <p><label>PO Amount  
-					  <label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label>  
-					  <font color="red"><?php echo $POamtErr;?></font></label></p>  
-				 
+				 </tr>
+				 <tr>
+					 <td> <p><label>PO Amount</td>  
+					  <td><label> <input type="text" disabled="disabled" pattern="[0-9]*" title="Please enter only digits." placeholder="Enter PO Amount" name="PO_Amount" type="text" id="PO_Amount"   value="<?php echo $PO_Amount;?>" ></label>  
+					  <font color="red"><?php echo $POamtErr;?></font></label></p></td>  
+				 </tr>
 				
 		<!--<button name="additem" id="additem" class="btn btn-default">Add Row</button> -->
 		
-			
+			</table>
 		 	
 	</div>
 </form> 	
+</table>
+<script>
+$("#form").validate({
+	rules:{
+		name:{
+			required:true,
+			minlength:2,
+			maxlength:4,
+			number:true
+		}
+	},
+	messages:{
+		name:{
+			required:"this field is required",
+			minlength:"need at least 2 char",
+			maxlength:"max 4 chars",
+			number:"decimal please"
+		}
+	}
+});
+</script>
 
 	<legend><strong>Item </strong></legend> 
 	
@@ -398,7 +502,6 @@ else{
 				 
 			 
 		</div>-->
-
 
 </body>
 </html>
